@@ -4,7 +4,7 @@ import GithubContext from '../../context/github/GithubContext'
 const UserSearch = () => {
   const [text, setText] = useState('')
 
-  const { users } = useContext(GithubContext)
+  const { users, searchUsers, clearUsers } = useContext(GithubContext)
 
   const handleChange = (e) => {
     setText(e.target.value)
@@ -17,12 +17,12 @@ const UserSearch = () => {
       //   setAlert('Please enter something', 'error')
       alert('please enter something')
     } else {
+      searchUsers(text)
       //   dispatch({ type: 'SET_LOADING' })
       //   const users = await searchUsers(text)
       //   dispatch({ type: 'GET_USERS', payload: users })
-
-      setText('')
     }
+    setText('')
   }
 
   return (
@@ -45,9 +45,11 @@ const UserSearch = () => {
           </div>
         </form>
       </div>
-      {users.length > 0 && (
+      {users?.length > 0 && (
         <div>
-          <button className='btn btn-ghost btn-lg'>Clear</button>
+          <button className='btn btn-ghost btn-lg' onClick={clearUsers}>
+            Clear
+          </button>
         </div>
       )}
     </div>
