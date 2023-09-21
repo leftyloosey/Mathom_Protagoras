@@ -11,20 +11,6 @@ const octokit = new Octokit({
   auth: `${GITHUB_TOKEN}`,
 })
 
-// const { data } = await octokit.request('GET /search/users', {
-//   q: 'leftyloosey',
-//   headers: {
-//     'X-GitHub-Api-Version': '2022-11-28',
-//   },
-// })
-// const response = await octokit.request('GET /orgs/{org}/repos', {
-//   org: 'octokit',
-//   type: 'private',
-// })
-// const { data } = await octokit.request('/users/search/')
-
-// console.log(data)
-
 export const GithubProvider = ({ children }) => {
   const initialState = {
     users: [],
@@ -45,11 +31,6 @@ export const GithubProvider = ({ children }) => {
     //   },
     // })
     // const { items } = await response.json()
-    console.log(text)
-
-    // const octokit = new Octokit({
-    //   auth: `${GITHUB_TOKEN}`,
-    // })
 
     const { data } = await octokit.request('GET /search/users', {
       q: `${text}`,
@@ -58,7 +39,6 @@ export const GithubProvider = ({ children }) => {
         'X-GitHub-Api-Version': '2022-11-28',
       },
     })
-    console.log(data)
     dispatch({
       type: 'GET_USERS',
       payload: data.items,
