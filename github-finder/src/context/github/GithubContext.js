@@ -5,7 +5,7 @@ import githubReducer from './GithubReducer'
 const GithubContext = createContext()
 
 // const GITHUB_URL = process.env.REACT_APP_GITHUB_API
-const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN3
+const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN
 
 const octokit = new Octokit({
   auth: `${GITHUB_TOKEN}`,
