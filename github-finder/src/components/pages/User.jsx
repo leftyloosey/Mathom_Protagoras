@@ -47,6 +47,10 @@ const User = () => {
                 <figure>
                   <img alt='avatar_url' src={avatar_url} />
                 </figure>
+                <div className='card-body justify-end'>
+                  <h2 className='card-title mb-0'>{name}</h2>
+                  <p>{login}</p>
+                </div>
               </div>
             </div>
           </div>
