@@ -53,7 +53,7 @@ export const GithubProvider = ({ children }) => {
       type: 'GET_USER',
       payload: data,
     })
-    console.log(data)
+    // console.log(data)
     // }
   }
 
