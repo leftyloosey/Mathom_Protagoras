@@ -29,7 +29,7 @@ export const GithubProvider = ({ children }) => {
         'X-GitHub-Api-Version': '2022-11-28',
       },
     })
-    console.log(data)
+    // console.log(data)
     dispatch({
       type: 'GET_USERS',
       payload: data.items,
@@ -65,7 +65,7 @@ export const GithubProvider = ({ children }) => {
     dispatch({
       type: 'SET_LOADING',
     })
-  console.log('STATE.USER', state.user)
+  // console.log('STATE.USER', state.user)
 
   return (
     <GithubContext.Provider

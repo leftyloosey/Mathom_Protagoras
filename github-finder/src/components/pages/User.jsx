@@ -13,23 +13,23 @@ const User = () => {
     getUser(params.login)
   }, [])
 
-  console.log('USER.JSX', user)
-  // const {
-  //   name,
-  //   type,
-  //   avatar_url,
-  //   location,
-  //   bio,
-  //   blog,
-  //   twitter_username,
-  //   login,
-  //   html_url,
-  //   followers,
-  //   following,
-  //   public_repos,
-  //   public_gists,
-  //   hireable,
-  // } = user
+  // console.log('USER.JSX', user)
+  const {
+    name,
+    type,
+    avatar_url,
+    location,
+    bio,
+    blog,
+    twitter_username,
+    login,
+    html_url,
+    followers,
+    following,
+    public_repos,
+    public_gists,
+    hireable,
+  } = user
 
   if (loading) {
     return <Spinner />
@@ -45,7 +45,7 @@ const User = () => {
             <div className='custom-card-image mb-6 md:mb-0'>
               <div className='rounded-lg shadow-xl card image-full'>
                 <figure>
-                  {/* <img alt='avatar_url' src={avatar_url} /> */}
+                  <img alt='avatar_url' src={avatar_url} />
                 </figure>
               </div>
             </div>
