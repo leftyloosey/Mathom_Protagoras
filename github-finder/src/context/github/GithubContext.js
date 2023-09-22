@@ -51,10 +51,10 @@ export const GithubProvider = ({ children }) => {
     // } else {
     dispatch({
       type: 'GET_USER',
-      payload: data.items,
+      payload: data,
     })
-    // }
     console.log(data)
+    // }
   }
 
   const clearUsers = () => {
@@ -65,6 +65,7 @@ export const GithubProvider = ({ children }) => {
     dispatch({
       type: 'SET_LOADING',
     })
+  console.log('STATE.USER', state.user)
 
   return (
     <GithubContext.Provider
