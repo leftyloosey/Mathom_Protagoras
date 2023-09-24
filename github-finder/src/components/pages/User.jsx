@@ -31,7 +31,6 @@ const User = () => {
     hireable,
   } = user
 
-  // const websiteUrl = 'https://hardinportfolio.herokuapp.com/'
   const websiteUrl = blog?.startsWith('http') ? blog : 'https://' + blog
 
   if (loading) {
