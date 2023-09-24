@@ -21,22 +21,6 @@ export const GithubProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(githubReducer, initialState)
 
-  // Search all users
-  const searchUsers = async (text) => {
-    setLoading()
-
-    const { data } = await octokit.request('GET /search/users', {
-      q: `${text}`,
-      headers: {
-        'X-GitHub-Api-Version': '2022-11-28',
-      },
-    })
-    dispatch({
-      type: 'GET_USERS',
-      payload: data.items,
-    })
-  }
-
   // Get single user
   const getUser = async (login) => {
     setLoading()
@@ -87,11 +71,12 @@ export const GithubProvider = ({ children }) => {
   return (
     <GithubContext.Provider
       value={{
-        users: state.users,
-        loading: state.loading,
-        user: state.user,
-        repos: state.repos,
-        searchUsers,
+        // users: state.users,
+        // loading: state.loading,
+        // user: state.user,
+        // repos: state.repos,
+        ...state,
+        dispatch,
         clearUsers,
         getUser,
         getRepos,
