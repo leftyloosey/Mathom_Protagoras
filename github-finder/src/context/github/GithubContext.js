@@ -15,6 +15,7 @@ export const GithubProvider = ({ children }) => {
   const initialState = {
     users: [],
     user: {},
+    repos: [],
     loading: false,
   }
 
@@ -30,7 +31,6 @@ export const GithubProvider = ({ children }) => {
         'X-GitHub-Api-Version': '2022-11-28',
       },
     })
-    // console.log(data)
     dispatch({
       type: 'GET_USERS',
       payload: data.items,
@@ -42,8 +42,6 @@ export const GithubProvider = ({ children }) => {
     setLoading()
 
     const { data } = await octokit.request(`GET /users/${login}`, {
-      //   q: `${text}`,
-      // username: 'USERNAME',
       headers: {
         'X-GitHub-Api-Version': '2022-11-28',
       },
@@ -63,17 +61,17 @@ export const GithubProvider = ({ children }) => {
   const getRepos = async (login) => {
     setLoading()
 
-    const { data } = await octokit.request('GET /repos/', {
-      q: `${login}`,
+    const { data } = await octokit.request(`GET /users/${login}/repos`, {
+      // q: `${login}`,
       headers: {
         'X-GitHub-Api-Version': '2022-11-28',
       },
     })
     // console.log(data)
-    // dispatch({
-    //   type: 'GET_REPOS',
-    //   payload: data.items,
-    // })
+    dispatch({
+      type: 'GET_REPOS',
+      payload: data,
+    })
   }
   // Clear users
   const clearUsers = () => {
@@ -92,6 +90,7 @@ export const GithubProvider = ({ children }) => {
         users: state.users,
         loading: state.loading,
         user: state.user,
+        repos: state.repos,
         searchUsers,
         clearUsers,
         getUser,
