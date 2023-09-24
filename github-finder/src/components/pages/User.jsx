@@ -21,7 +21,7 @@ const User = () => {
       dispatch({ type: 'GET_REPOS', payload: userRepos })
     }
     getUserData()
-  }, [])
+  }, [dispatch, params.login])
 
   const {
     name,

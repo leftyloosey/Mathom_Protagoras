@@ -1,6 +1,5 @@
 import { Octokit } from '@octokit/core'
 
-// const GITHUB_URL = process.env.REACT_APP_GITHUB_API
 const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN4
 
 const octokit = new Octokit({
@@ -9,8 +8,6 @@ const octokit = new Octokit({
 
 // Search all users
 export const searchUsers = async (text) => {
-  //   setLoading()
-
   const { data } = await octokit.request('GET /search/users', {
     q: `${text}`,
     headers: {
@@ -27,15 +24,6 @@ export const getUser = async (login) => {
       'X-GitHub-Api-Version': '2022-11-28',
     },
   })
-  // if (data.status === 404) {
-  //   window.location = '/notfound'
-  // } else {
-  // dispatch({
-  //   type: 'GET_USER',
-  //   payload: data,
-  // })
-  // console.log(data)
-  // }
   return data
 }
 
