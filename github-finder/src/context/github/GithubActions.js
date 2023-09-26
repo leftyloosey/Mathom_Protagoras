@@ -36,3 +36,12 @@ export const getRepos = async (login) => {
   })
   return data
 }
+
+export const getUserAndRepos = async (login) => {
+  const [user, repos] = await Promise.all([
+    octokit.get(`/users/${login}`),
+    octokit.get(`/users/${login}/repos`),
+  ])
+
+  return { user: user.data, repos: repos.data }
+}
