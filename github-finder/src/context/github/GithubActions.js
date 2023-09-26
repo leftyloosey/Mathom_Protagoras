@@ -17,30 +17,10 @@ export const searchUsers = async (text) => {
   return data.items
 }
 
-// Get single user
-export const getUser = async (login) => {
-  const { data } = await octokit.request(`GET /users/${login}`, {
-    headers: {
-      'X-GitHub-Api-Version': '2022-11-28',
-    },
-  })
-  return data
-}
-
-// Get user repos
-export const getRepos = async (login) => {
-  const { data } = await octokit.request(`GET /users/${login}/repos`, {
-    headers: {
-      'X-GitHub-Api-Version': '2022-11-28',
-    },
-  })
-  return data
-}
-
 export const getUserAndRepos = async (login) => {
   const [user, repos] = await Promise.all([
-    octokit.get(`/users/${login}`),
-    octokit.get(`/users/${login}/repos`),
+    octokit.request(`/users/${login}`),
+    octokit.request(`/users/${login}/repos`),
   ])
 
   return { user: user.data, repos: repos.data }
